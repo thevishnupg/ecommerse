@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+<center>
+    <h1>Hey pay for your porduct</h1>
+    <a href="{% url 'checkout' %}"><button class="btn btn-secondary">Go Back</button></a>
+</center>
+{% endblock %}

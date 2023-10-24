@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block body_block %}
+
+    <div class="container">
+        <div class="row">
+            {% if searched %}
+
+            <div class="col-12">
+                <h3 class="text-center">Showing result for {{searched}}</h3>
+            </div>
+            {% for computer in computers %}
+            <div class="col-12 search-center">
+                <div class="row search-center">
+                    <div class="col-4 col-sm-3 search-adjust">
+                        <img src="{{ computer.imageURL }}" class="" alt="product">
+                    </div>
+                    <div class="col-8 col-sm-9  search-padding">
+                        <a href="{% url 'detail' computer.id %}">{{computer}}</a>
+                    </div>
+                </div>
+            </div><br>
+            {% endfor %}
+        
+            {% else %}
+            <div class="col-12">
+                <h3>Hey You Forgot To Search For Computers...</h3> 
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}
+    

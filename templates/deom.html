@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button with Tooltip Example</title>
+    <style>
+        /* Button with Tooltip container */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Button styling */
+        .tooltip-container button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Tooltip text */
+        .tooltip-container .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Show the tooltip text when hovering over the button */
+        .tooltip-container:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Button with Tooltip -->
+
+<div class="container-fluid mt-5">
+    <div class="tooltip-container">
+        <button>Hover me</button>
+        <div class="tooltiptext">This is a tooltip</div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

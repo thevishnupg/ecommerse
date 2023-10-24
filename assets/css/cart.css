@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+img{
+  width: 100%;
+}
+
+body{
+
+  background: rgb(255, 255, 255);
+}
+
+.cartlook{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.body-arrange{
+  text-align: center;
+  width: 100%;
+  height: auto;
+  border: 1px solid black;
+
+}
+
+.body-arrange.quty{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.body-arrange.quty >div{
+  padding: 0px 5px;
+}

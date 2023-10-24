@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block body_block %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 head-txt">
+                Product-Details
+            </div>
+            <div class="squr1">
+
+            </div>
+            <div class="squr2">
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-md-4 det-img">
+                <div class="p-3">
+                    <img src="{{ obj.imageURL }}" class="" alt="product">
+                </div>
+                <div class="text-center pb-3 pt-0 px-5">
+                    <button data-product="{{obj.id}}" data-action="add" class="w-100 btn btn-dark add-btn update-cart">Add To Cart</button>
+                </div>
+            </div>
+            <div class="col-md-5 demobg1">
+               Name: {{obj.name}} <br> <br>
+               Processor: {{obj.processor}} <br> <br>
+               RAM: {{obj.ram}} <br> <br>
+               Description: {{obj.description}} <br> <br>
+               Price: {{obj.price}}
+            </div>
+            <div class="col-md-3 demobg2">
+                <a href="{% url 'checkout' %}"><button class="buy">Buy Now</button></a>
+
+            </div>
+        </div>
+    </div>
+    
+    {% endblock %} 

@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  {% block body_block %}
+
+  <div class="container-fluid px-0">
+    <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active item-height">
+          <div class="bgimg1 infobox">
+
+          </div>
+        </div>
+        <div class="carousel-item item-height">
+          <div class="bgimg2">
+                <!-- 3 -->
+          </div>
+          </div>
+        </div>
+      <div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon " aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-12 pt-4">
+            <h4 class="">About Us</h4>
+        </div>
+        <div class="col-12">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem unde nihil consequatur sequi rerum distinctio fugit sunt quam! Mollitia, deserunt quia odit quaerat beatae sapiente excepturi provident in non quibusdam pariatur voluptatum optio quae magnam. Sit molestiae voluptas libero excepturi mollitia tempora, nam est, ut odio doloribus molestias vero alias omnis consectetur enim, numquam officia. Numquam soluta vel at iure?
+            </p>
+        </div>
+    </div>
+  </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 pt-4">
+      <h1 class="text-center">New Products</h1>
+    </div>
+    <div class="col-12">
+      <div class="row product">
+      <!-- for loop  -->
+      {% for o in obj %}
+      <div class="spa">
+      <div class="card">
+        <div class="card-img">
+          <img src="{{ o.imageURL }}" class="" alt="product">
+        </div>
+        <div class="card-name">
+          <h5 class=" card-title pb-4">{{ o.name }}</h5>
+        </div>
+        <div class="card-details">
+          {% if user.is_authenticated %}
+          <div class="cart-button">
+            <!-- 1 -->
+            <button data-product="{{o.id}}" data-action="add" class="btn btn-outline-dark add-btn update-cart"><span class="material-symbols-outlined">shopping_cart</span></button>
+          </div>
+          {% else %}
+          <div class="tooltip-container">
+            <button data-product="{{o.id}}" data-action="add" class="btn btn-outline-dark add-btn update-cart"><span class="material-symbols-outlined">shopping_cart</span></button>
+            <div class="tooltiptext">Login for add to cart</div>
+        </div>
+          <!-- <div class="cart-button">
+            <button data-product="{{o.id}}" data-action="add" class="add-btn update-cart"><span class="material-symbols-outlined">shopping_cart</span></button>
+            <div class="tooltiptext">long in for add to cart</div>
+          </div> -->
+          {% endif %}
+          <div class="price">
+            ${{ o.price }}
+          </div>
+          <div class="info-button">
+            <a href="{% url 'detail' o.id %}" class="btn btn-outline-dark">info</a>
+          </div>
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+        <!-- 2 -->
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container-fluid">
+    <div id="carousel_2nd" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+    <div class="carousel-item active">
+
+    <div class="row py-3">
+      <div class="col-md-6 col-12 slide-img-two">
+        <img class="blur" src="../static/img/studprofile.jpg" alt="Students like">
+        <div class="fade apply">
+          Students
+        </div>
+      </div>
+      <div class="col-md-6 col-12">
+        <div class="row">
+          <div class="col-12 text-center pb-3">
+            <h2>Students</h2>
+          </div>
+          <div class="col-12 py-2 ">
+            <div class="row">
+              <div class="col-md-4 col-6 py-2">
+                <img class="slide-img-two inside-img" src="../static/img/lap.webp" alt="">
+              </div>
+              <div class="col-md-8 col-6 py-2 ">
+                <h5>Tech name1</h5>
+                <p class="limit_text">Feture explanation Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis quis praesentium suscipit ipsum animi sunt.</p>
+              </div>
+              <div class="col-md-4 col-6 py-2 ">
+                <img class="slide-img-two inside-img" src="../static/img/lap.webp" alt="">
+              </div>
+              <div class="col-md-8 col-6 py-2 ">
+                <h5>Tech name2</h5>
+                <p class="limit_text">Feture explanation Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet dicta quos modi reiciendis, dolore excepturi?</p>
+              </div>
+              <div class="col-md-4 col-6 py-2 ">
+                <img class="slide-img-two inside-img" src="../static/img/lap.webp" alt="">
+              </div>
+              <div class="col-md-8 col-6 py-2">
+                <h5>Tech name3</h5>
+                <p class="limit_text">Feture explanation Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas odit animi sapiente. Temporibus, est rerum?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-item ">
+
+    <div class="row py-3">
+      <div class="col-md-6 col-12 slide-img-two">
+        <img class="blur" src="../static/img/proffesional2.webp" alt="Students like">
+        <div class="fade apply">
+          Proffesionals
+        </div>
+      </div>
+      <div class="col-md-6 col-12">
+        <div class="row">
+          <div class="col-12 text-center pb-3">
+            <h3>Business</h3>
+          </div>
+          <div class="col-12 py-2 ">
+            <div class="row">
+              <div class="col-md-4 col-6 py-2">
+                <img class="slide-img-two inside-img" src="../static/img/lap.webp" alt="">
+              </div>
+              <div class="col-md-8 col-6 py-2 ">
+                <h5>Tech name1</h5>
+                <p class="limit_text">Feture explanation Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis quis praesentium suscipit ipsum animi sunt.</p>
+              </div>
+              <div class="col-md-4 col-6 py-2 ">
+                <img class="slide-img-two inside-img" src="../static/img/lap.webp" alt="">
+              </div>
+              <div class="col-md-8 col-6 py-2 ">
+                <h5>Tech name2</h5>
+                <p class="limit_text">Feture explanation Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet dicta quos modi reiciendis, dolore excepturi?</p>
+              </div>
+              <div class="col-md-4 col-6 py-2 ">
+                <img class="slide-img-two inside-img" src="../static/img/lap.webp" alt="">
+              </div>
+              <div class="col-md-8 col-6 py-2">
+                <h5>Tech name3</h5>
+                <p class="limit_text">Feture explanation Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas odit animi sapiente. Temporibus, est rerum?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-item ">
+
+    <div class="row py-3">
+      <div class="col-md-6 col-12 slide-img-two">
+        <img class="blur" src="../static/img/gaming2.webp" alt="Students like">
+        <div class="fade apply">
+          Gammers
+        </div>
+      </div>
+      <div class="col-md-6 col-12">
+        <div class="row">
+          <div class="col-12 text-center pb-3">
+            <h3>Gammers</h3>
+          </div>
+          <div class="col-12 py-2 ">
+            <div class="row">
+              <div class="col-md-4 col-6 py-2">
+                <img class="slide-img-two inside-img" src="../static/img/lap.webp" alt="">
+              </div>
+              <div class="col-md-8 col-6 py-2 ">
+                <h5>Tech name1</h5>
+                <p class="limit_text">Feture explanation Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis quis praesentium suscipit ipsum animi sunt.</p>
+              </div>
+              <div class="col-md-4 col-6 py-2 ">
+                <img class="slide-img-two inside-img" src="../static/img/lap.webp" alt="">
+              </div>
+              <div class="col-md-8 col-6 py-2 ">
+                <h5>Tech name2</h5>
+                <p class="limit_text">Feture explanation Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet dicta quos modi reiciendis, dolore excepturi?</p>
+              </div>
+              <div class="col-md-4 col-6 py-2 ">
+                <img class="slide-img-two inside-img" src="../static/img/lap.webp" alt="">
+              </div>
+              <div class="col-md-8 col-6 py-2">
+                <h5>Tech name3</h5>
+                <p class="limit_text">Feture explanation Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas odit animi sapiente. Temporibus, est rerum?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <div class="col-12">
+    <div class="row justify-content-center">
+      <div class="col-6 text-right ">
+        <a  href="#carousel_2nd"  data-slide="prev">
+          <img class="control_arrow" src="../static/img/lfarrow.png" alt="">
+        </a>
+      </div>
+      <div class="col-6 text-left ">
+        <a href="#carousel_2nd"  data-slide="next">
+          <img class="control_arrow" src="../static/img/rfarrow.png" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row py-5">
+    <div class="col-12 text-center pb-5">
+      <h3 class="text-center">
+        Services Provided
+      </h3>
+    </div>
+    <div class="col-12 pt-3">
+      <div class="row">
+        <div class="col-md-9 py-3">
+          <h4>Maintenance Work</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo labore, dignissimos, exercitationem quisquam voluptatum neque esse reiciendis corrupti ullam at praesentium. Quidem eaque deleniti soluta molestiae accusamus ea dolor quo?</p>
+        </div>
+        <div class="col-md-3 py-3">
+          <img class="services_imgs" src="../static/img/maintnance.webp" alt="">
+        </div>
+        <div class="col-md-9 py-3">
+          <h4>Reparing Work</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo labore, dignissimos, exercitationem quisquam voluptatum neque esse reiciendis corrupti ullam at praesentium. Quidem eaque deleniti soluta molestiae accusamus ea dolor quo?</p>
+        </div>
+        <div class="col-md-3 py-3">
+          <img class="services_imgs" src="../static/img/reparing2.webp" alt="">
+        </div>
+        <div class="col-md-9 py-3">
+          <h4>Free Delivery</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo labore, dignissimos, exercitationem quisquam voluptatum neque esse reiciendis corrupti ullam at praesentium. Quidem eaque deleniti soluta molestiae accusamus ea dolor quo?</p>
+        </div>
+        <div class="col-md-3 py-3">
+          <img class="services_imgs" src="../static/img/shiping.webp" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

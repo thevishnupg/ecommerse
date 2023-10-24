@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block body_block %}
+
+    {% if cartItems == 0 %} 
+    <div class="container pt-5">
+        <div class="row cartcenter">
+            <div class="col-md-3 cartborder">
+                <a href="{% url 'home' %}"><img src="../static/img/shopping cart.webp" alt="continue shopping"></a>
+                <a href="{% url 'home' %}"><h3 class="text-center delivarytext pt-3">Continue Shopping</h3></a>
+            </div>
+        </div>
+    </div>
+    {% else %} 
+    <div class="container">
+        <div class="row py-5">
+            {% for i in item %}
+            <div class="col-lg-8 col-md-9 col-12 mr-auto pr-4 ">
+                <div class="row cart-item-arrange">
+                    <div class="cart-img col-md-3 col-sm-4 col-12 ">
+             
+                        <img src="{{i.product.imageURL}}" alt="product">
+                    
+                    </div>
+
+                    <div class="col-md-9 col-sm-8 col-12">
+                        <div class="row cartcenterarr">
+                            <div class="col-2 uparrow">
+                                <button data-product="{{i.product.id}}" data-action="add" class="update-cart material-symbols-outlined">
+                                    arrow_upward_alt
+                                </button>
+                            </div>
+        
+                            <div class="col-2 cartqty">
+                                <p>{{i.quantity}} </p>
+                            </div>
+        
+                            <div class="col-2 downarrow">
+                                <button data-product="{{i.product.id}}" data-action="remove" class="update-cart material-symbols-outlined">
+                                    arrow_downward_alt
+                                </button>
+                            </div>
+        
+                            <div class="col-4 cart-name">
+                                {{i.product.name}}
+                            </div>
+        
+                            <div class="col-2 cart-price">
+                               ${{i.get_total}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+            <div class="col-lg-4 col-md-3 col-12 cart-total-arrange">
+                <!-- <p>Total orderd items {{order.get_cart_items}}</p> -->
+                <p>$ Total price - <b>{{order.get_cart_total}}</b></p>
+                <a href="{% url 'checkout' %}"><button class="buy">Buy Now</button></a>
+            </div>
+        </div>
+    </div>
+    {% endif %} 
+   
+    {% endblock %}

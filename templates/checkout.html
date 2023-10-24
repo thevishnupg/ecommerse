@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block body_block %}
+
+    <div class="container-fluid py-4">
+        <div class="row pr-5">
+            <div class="col-md-7 col850">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="text-center delivarytext">Delivary Info</h4>
+                    </div>
+                    <div class="col-12 checkout-box">
+                        <form action="{% url 'payment' %}" >
+                          
+                                <div class="row form-field userinfo">
+                                    <div class="col-md-6">
+                                        <input type="text" name="name" placeholder="Name..">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" name="email" placeholder="Email..">
+                                    </div>
+                                </div>
+                           
+                                <div class="row form-field shippinginfo">
+                                    <div class="col-md-6">
+                                        <input type="text" name="address" placeholder="Address..">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="city" placeholder="City..">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="pin" placeholder="Pin..">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="land" placeholder="Landmark">
+                                    </div>
+                                </div>
+                                <div class="row form-field">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="">Continue</button>
+                                        
+                                    </div>                                  
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-5 col850 checkoutborder">
+                <div class="row checkout-items-arrange">
+                    {% for i in item %}
+                    <div class="col-md-3 col-sm-4 checkout-img">
+                        <a href="{% url 'detail' i.product.id %}"><img src="{{i.product.imageURL}}" alt="product"></a>
+                    </div>
+                
+                
+                    <div class=" col-md-9 col-sm-8">
+                        <div class="row checkoutitem">
+                            <div class="col-1 checkuparrow px-0 mx-0">
+                                <button data-product="{{i.product.id}}" data-action="add" class="update-cart material-symbols-outlined">
+                                    arrow_upward_alt
+                                </button>
+
+                            </div>
+                
+                
+                            <div class="col-2 px-0 mx-0 checkoutqty">
+                                <h6 class="px-0 mx-0 text-primary">{{i.quantity}}</h6>
+                            </div>
+                
+                            
+                            <div class="col-1 checkdownarrow px-0 mx-0">
+                                <button data-product="{{i.product.id}}" data-action="remove" class="update-cart material-symbols-outlined">
+                                    arrow_downward_alt
+                                </button>
+                            </div>
+                
+                
+                            <div class="col-4 checkoutname">
+                                {{i.product.name}}
+                            </div>
+                            <div class="col-4 checkoutprice">
+                               ${{i.get_total}}
+                            </div>
+                        </div>
+                    </div> 
+                    {% endfor %}
+                
+                </div><hr>
+
+                <div class="row px-4">
+                    <div class="col-6 total">
+                        items:{{order.get_cart_items}}
+                    </div>
+                    <div class="col-6 total text-right">
+                        total:{{order.get_cart_total}}
+                    </div>
+                </div>
+                 <hr>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+    
